@@ -1,0 +1,10 @@
+.msj{
+    background-color: #2D2727;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    margin: 0 50px 10px 50px;
+    font-weight: bold;
+}
