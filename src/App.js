@@ -8,6 +8,8 @@ import { TodoSearch } from "./TodoSearch";
 
 import { TodoProvider } from "./todoContext/";
 
+import { Modal } from "./Modal"
+
 import './css/app.css';
 
 //  const defaultTodos = [
@@ -19,15 +21,19 @@ import './css/app.css';
 
 
 export default function App() {
+  
   return (
     <>
     <TodoProvider>
+    
       
     <TodoCounter/>
     <TodoSearch/>
 
     <TodoContext.Consumer>
-      {({error,loading,searchedTodos,completeTodo,deleteTodo}) => (
+      
+      {({error,loading,searchedTodos,completeTodo,deleteTodo,openModal,setOpenModal}) => (
+
         <TodoList>
           {error && <p className="msj">Desespérate, hubo un error...</p>}
           {loading && <p className="msj">Cargando...</p>}
@@ -42,11 +48,34 @@ export default function App() {
               onDelete={() => deleteTodo(todo.id)}
             />
           ))}
+          {
+            !!openModal && (
+              <Modal>
+                <p> {searchedTodos[1]?.text} </p>
+              </Modal>
+            )
+          }
+          <CreateTodoButton 
+          setOpenModal = {setOpenModal}
+          openModal = {openModal}
+          />
         </TodoList>
+        
       )}
+      
+      
+                  
     </TodoContext.Consumer>
-  
-    <CreateTodoButton/> 
+    
+    {/* <TodoContext.Consumer>
+      {({setOpenModal}) => {
+        <CreateTodoButton 
+        setOpenModal = {setOpenModal}
+        />
+      }}
+    </TodoContext.Consumer> */}
+    
+
     </TodoProvider>
     </>
   );
