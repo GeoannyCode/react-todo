@@ -38,12 +38,12 @@ function useLocalStorage(itemName, initialValue){
       }
     };
   
-    return [
+    return {
       item,
       saveItem,
       loading,
       error
-    ]
+    }
   }
 
 export {useLocalStorage};

@@ -5,7 +5,7 @@ const TodoContext = React.createContext();
 
 function TodoProvider(props){
 
-    const [todos,saveTodos, loading, error] = useLocalStorage('TODOS_V1', []);
+    const {item:todos,saveItem:saveTodos, loading, error} = useLocalStorage('TODOS_V1', []);
 
     const [searchValue, setSearchValue] = React.useState('');
     const [openModal, setOpenModal] = React.useState(false);
@@ -62,6 +62,6 @@ function TodoProvider(props){
     )
 }
 
-<TodoContext.Consumer></TodoContext.Consumer>
+{/* <TodoContext.Consumer></TodoContext.Consumer> */}
 
 export {TodoContext, TodoProvider};
