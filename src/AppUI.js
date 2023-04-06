@@ -19,16 +19,21 @@ import { TodoForm } from "./TodoForm";
 
 
 function AppUI() {
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal
+  } = React.useContext(TodoContext)
   
   return (
     <>
     <TodoCounter/>
-    <TodoSearch/>
+    <TodoSearch/>        
 
-    <TodoContext.Consumer>
-      
-      {({error,loading,searchedTodos,completeTodo,deleteTodo,openModal,setOpenModal}) => (
-        
         <TodoList>
           {error && <p className="msj">Desespérate, hubo un error...</p>}
           {loading && <p className="msj">Cargando...</p>}
@@ -55,12 +60,6 @@ function AppUI() {
           openModal = {openModal}
           />
         </TodoList>
-        
-      )}
-      
-      
-                  
-    </TodoContext.Consumer>
     </>
   );
 }
