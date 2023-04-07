@@ -10,6 +10,8 @@ import { Modal } from "./Modal"
 import './css/app.css';
 import { TodoForm } from "./TodoForm";
 
+import { TodosLoading, TodosError, EmptyTodos } from "./TodosLoadingSkelentons";
+
 //  const defaultTodos = [
 //     {id:1, text: 'Cortar cebolla', completed: true },
 //     {id:2, text: 'Tomar el cursso de intro a React', completed: false },
@@ -35,9 +37,9 @@ function AppUI() {
     <TodoSearch/>        
 
         <TodoList>
-          {error && <p className="msj">Desespérate, hubo un error...</p>}
-          {loading && <p className="msj">Cargando...</p>}
-          {(!loading && !searchedTodos.length) && <p className="msj">¡Crea tu primer TODO!</p>}
+          {error && <TodosError error={error}/> }
+          {loading && <TodosLoading/> }
+          {(!loading && !searchedTodos.length) && <EmptyTodos/>}
 
           {searchedTodos.map( todo =>(
             <TodoItem 
